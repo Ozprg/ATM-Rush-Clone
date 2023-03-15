@@ -34,17 +34,39 @@ public class CollectibleManager1 : MonoBehaviour
         }
     }
 
-    public void AddToStack(GameObject stackableCollectible, int index)
+    public void AddToStack(GameObject stackableCollectible)
     {
         collectibleList.Add(stackableCollectible);
-        stackableCollectible.transform.parent = collectiblesParent;
-        Vector3 positionAfterStacked = collectibleList[index].transform.localPosition;
-        positionAfterStacked.y = stackableCollectible.transform.localPosition.y;
-        positionAfterStacked.z += distanceBetweenStackedCollectibles;
-        stackableCollectible.transform.localPosition = positionAfterStacked;
+       
+        //stackableCollectible.transform.parent = collectiblesParent;
+        //int index = collectibleList.IndexOf(stackableCollectible);
+        //Vector3 positionAfterStacked = collectibleList[index].transform.localPosition;
+        //positionAfterStacked.y = stackableCollectible.transform.localPosition.y;
+        //positionAfterStacked.z += distanceBetweenStackedCollectibles;
+        //stackableCollectible.transform.localPosition = positionAfterStacked;
         
-
         StartCoroutine(DoTweenWhenCollected());
+    }
+
+    public void OnObjectFalledAndFalLAllAbove(GameObject collectibleObject)
+    {
+        int index = collectibleList.IndexOf(collectibleObject);
+
+        for (int i = collectibleList.Count - 1; i >= index; i--)
+        {
+            LoseObject(collectibleList[i]);
+        }
+    }
+
+    private void LoseObject(GameObject collectible)
+    {
+        if(!collectible) return;
+
+        int index = collectibleList.IndexOf(collectible);
+        collectibleList.RemoveAt(index);
+        collectible.transform.parent = transform.root;
+        //isCollected = false
+        
     }
 
     public void RemoveFromStack(GameObject colludedGameObject, int indexOfColludedObject)

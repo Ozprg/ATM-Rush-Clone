@@ -13,9 +13,8 @@ public class PlayerMoneyCollector : MonoBehaviour
             other.GetComponent<SphereCollider>().isTrigger = true;
             other.gameObject.AddComponent<Rigidbody>();
             other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            other.gameObject.AddComponent<Collectibles>();
-            CollectibleManager1.Instance.AddToStack(other.gameObject, CollectibleManager1.Instance.collectibleList.Count-1);
+            other.gameObject.AddComponent<CollectibleMovement>();
+            CollectibleManager1.Instance.AddToStack(other.gameObject);
         }
-
     }
 }
