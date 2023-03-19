@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3209839419923545883}
   - component: {fileID: 3681244330158922403}
   - component: {fileID: 2841392803108338210}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,10 +92,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1732838401472442033}
+  - component: {fileID: 7048173377127191951}
   - component: {fileID: 9168518867411587706}
-  m_Layer: 0
-  m_Name: Collectible2
-  m_TagString: UnstackedCollectible
+  - component: {fileID: 5317967915174753609}
+  - component: {fileID: 4508114850930360408}
+  - component: {fileID: 3014713477893766668}
+  m_Layer: 6
+  m_Name: Collectible
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,6 +120,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &7048173377127191951
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4903574702998308992}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 1
 --- !u!135 &9168518867411587706
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -129,3 +149,40 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5317967915174753609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4903574702998308992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab55f3ed559c4152be28ff2600c63e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _body: {fileID: 3209839419923545883}
+--- !u!114 &4508114850930360408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4903574702998308992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f2ccaeb4e5462cad8759e917e88091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3014713477893766668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4903574702998308992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bcc31fab3a410bb9786006b8b9c2b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
