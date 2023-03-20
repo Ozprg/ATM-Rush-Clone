@@ -1,4 +1,4 @@
-using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class CollectibleMovementController : MonoBehaviour
@@ -7,7 +7,6 @@ public class CollectibleMovementController : MonoBehaviour
     public bool isStackedBefore { get; set; }
     public bool isLastStacked { get; set; }
     public Transform stackedTransform { get; set; }
-
     public float stackedObjectSpeed { get; set; }
     public float stackedObjectMaxXDifference  { get; set; }
     public float distanceBetweenStackedObjects  { get; set; }
@@ -21,10 +20,6 @@ public class CollectibleMovementController : MonoBehaviour
     {
         if (isCollected)
         {
-            //stackedObjectSpeed hızıyla hareket edecek
-            //stackedObjectMaxXDifference kadar x pozisyonu clamplenecek
-            //distanceBetweenStackedObjects kadar z farkı olacak stackedTransform ile
-            
             Vector3 thisPosition = transform.position;
             Vector3 stackedPosition = stackedTransform.position;
 
@@ -46,8 +41,16 @@ public class CollectibleMovementController : MonoBehaviour
     {
         isCollected = false;
         stackedTransform = null;
-        
-        //Stackten düşme hareketi, zıplama, kaybolma, yok olma
+
+        Vector3 thisPosition = transform.position;
+        float randomXPos = Random.Range(-2, 2);
+        float randomZPos = thisPosition.z + Random.Range(7, 12);
+
+        Vector3 jumpPosition = new Vector3(randomXPos, 0, randomZPos);
+
+        transform
+            .DOJump(jumpPosition, 1, 1, 0.5f)
+            .OnComplete(EnableCollision);
     }
 
     public void EnableActivatedState()
@@ -60,5 +63,10 @@ public class CollectibleMovementController : MonoBehaviour
                 isCollected = true;
             }
         }
+    }
+
+    private void EnableCollision()
+    {
+        isStackedBefore = false;
     }
 }

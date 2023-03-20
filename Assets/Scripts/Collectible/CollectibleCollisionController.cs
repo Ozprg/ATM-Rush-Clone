@@ -14,7 +14,7 @@ public class CollectibleCollisionController : CollisionController
             {
                 if (collidedObject.layer == obstacleLayer)
                 {
-                    LevelController.Instance.PlayerCollidedWithObstacle(transform);
+                    LevelController.Instance.StackedObjectHitObstacle(collectibleController);
                 }    
                 
                 if (collidedObject.layer == collectibleLayer)

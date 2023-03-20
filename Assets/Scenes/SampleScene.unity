@@ -245,16 +245,20 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4612868019165788415, guid: bad2b1377c0d6394abef27bbe16de0d0, type: 3}
+      propertyPath: stackedObjectSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4612868019165788415, guid: bad2b1377c0d6394abef27bbe16de0d0, type: 3}
       propertyPath: stackedFeedbackDelay
       value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4612868019165788415, guid: bad2b1377c0d6394abef27bbe16de0d0, type: 3}
       propertyPath: stackedFeedbackDuration
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4612868019165788415, guid: bad2b1377c0d6394abef27bbe16de0d0, type: 3}
       propertyPath: stackedFeedbackScaleRate
-      value: 0.7
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 4612868019165788415, guid: bad2b1377c0d6394abef27bbe16de0d0, type: 3}
       propertyPath: distanceBetweenStackedObjects

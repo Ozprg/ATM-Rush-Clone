@@ -87,12 +87,15 @@ public class StackManager : MonoBehaviour
     {
         for (int i = _stackedObjectList.Count - 1; i >= 0; i--)
         {
-            DOTween.Kill(_stackedObjectList[i].body);
-            _stackedObjectList[i].body.localScale = Vector3.one;
-            _stackedObjectList[i].body
-                .DOPunchScale(Vector3.one * stackedFeedbackScaleRate, stackedFeedbackDuration, 0, 0)
-                /*.SetEase(Ease.InSine)*/;
-            yield return new WaitForSeconds(stackedFeedbackDelay);
+            if (i >= 0 && i < _stackedObjectList.Count)
+            {
+                DOTween.Kill(_stackedObjectList[i].body);
+                _stackedObjectList[i].body.localScale = Vector3.one;
+                _stackedObjectList[i].body
+                    .DOPunchScale(Vector3.one * stackedFeedbackScaleRate, stackedFeedbackDuration, 0, 0)
+                    /*.SetEase(Ease.InSine)*/;
+                yield return new WaitForSeconds(stackedFeedbackDelay);
+            }
         }
     }
 }
