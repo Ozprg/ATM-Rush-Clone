@@ -27,7 +27,7 @@ public class CollectibleMovementController : MonoBehaviour
 
             
             
-            /*Vector3 thisPosition = transform.position;
+            Vector3 thisPosition = transform.position;
             Vector3 stackedPosition = stackedTransform.position;
 
             thisPosition = new Vector3(
@@ -40,11 +40,11 @@ public class CollectibleMovementController : MonoBehaviour
                 Mathf.Lerp(thisPosition.z, stackedPosition.z + distanceBetweenStackedObjects,
                     Mathf.Clamp(Time.deltaTime * stackedObjectSpeed, 0, 0.8f)));
 
-            transform.position = thisPosition;*/
+            transform.position = thisPosition;
         }
     }
 
-    public void FallFromSThetack()
+    public void FallFromSTheStack()
     {
         isCollected = false;
         stackedTransform = null;

@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerCollisionController : CollisionController
@@ -14,7 +13,12 @@ public class PlayerCollisionController : CollisionController
                 CollectibleController collectedCollectible = collidedObject.GetComponent<CollectibleController>();
                 if (collectedCollectible)
                 {
-                    LevelController.Instance.PlayerCollectedCollectible(collectedCollectible);
+                    if (!collectedCollectible.collectibleMovementController.isStackedBefore)
+                    {
+                        Debug.Log(("player değdi"));
+
+                        LevelController.Instance.PlayerCollectedCollectible(collectedCollectible);
+                    }
                 }
             }
             

@@ -22,7 +22,11 @@ public class CollectibleCollisionController : CollisionController
                     CollectibleController collectedCollectible = collidedObject.GetComponent<CollectibleController>();
                     if (collectedCollectible)
                     {
-                        LevelController.Instance.PlayerCollectedCollectible(collectedCollectible);
+                        if (!collectedCollectible.collectibleMovementController.isStackedBefore)
+                        {
+                            Debug.Log(("col değdi"));
+                            LevelController.Instance.PlayerCollectedCollectible(collectedCollectible);
+                        }
                     }
                 }
                 

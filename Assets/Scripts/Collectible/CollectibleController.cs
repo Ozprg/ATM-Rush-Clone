@@ -33,6 +33,6 @@ public class CollectibleController : MonoBehaviour, IInteractable
 
     public void LoseAsStackedObject()
     {
-        collectibleMovementController.FallFromSThetack();
+        collectibleMovementController.FallFromSTheStack();
     }
 }
