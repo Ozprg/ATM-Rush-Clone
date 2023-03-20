@@ -10,16 +10,14 @@ public class StackManager : MonoBehaviour
     [SerializeField] [Range(0, 5)] private float distanceBetweenStackedObjects;
     [SerializeField] [Range(0, 2)] private float stackedFeedbackScaleRate;
     [SerializeField] [Range(0, 1)] private float stackedFeedbackDuration;
+    [SerializeField] [Range(0, 1)] private float stackedFeedbackDelay;
     [SerializeField] private Transform frontStackTransform;
     private List<CollectibleController> _stackedObjectList;
     private Transform _lastStackedTransform;
-    private int _stackedIndex;
-    private BoxCollider _boxCollider;
 
     private void Awake()
     {
         _stackedObjectList = new List<CollectibleController>();
-        _boxCollider = GetComponent<BoxCollider>();
     }
 
     private void Start()
@@ -46,7 +44,6 @@ public class StackManager : MonoBehaviour
         stackingController.collectibleMovementController.distanceBetweenStackedObjects =
             this.distanceBetweenStackedObjects;
         
-        _stackedIndex++;
         _stackedObjectList.Add(stackingController);
        
         CollectibleMovementController lastController =
@@ -58,9 +55,7 @@ public class StackManager : MonoBehaviour
         _lastStackedTransform = stackingController.transform;
         currentController.isLastStacked = true;
 
-        //max angle atama
-
-        //StartCoroutine(DoCollectedFeedback());
+        StartCoroutine(DoCollectedFeedback());
     }
 
     private void OnStackedObjectHitObstacle(CollectibleController stackedObject)
@@ -85,19 +80,19 @@ public class StackManager : MonoBehaviour
         int index = _stackedObjectList.IndexOf(falledObject);
         _stackedObjectList.RemoveAt(index);
         _lastStackedTransform = falledObject.collectibleMovementController.stackedTransform;
-        _stackedIndex--;
-        _boxCollider.isTrigger = _stackedIndex > 1;
         falledObject.LoseAsStackedObject();
     }
 
     private IEnumerator DoCollectedFeedback()
     {
-        Debug.Log("123123123123");
-        for (int index = _stackedObjectList.Count - 1; index >= 0; index--)
+        for (int i = _stackedObjectList.Count - 1; i >= 0; i--)
         {
-            _stackedObjectList[index].body
-                .DOPunchScale(Vector3.one * stackedFeedbackScaleRate, stackedFeedbackDuration, 5, 0.5f);
-            yield return new WaitForSeconds(0.05f);
+            DOTween.Kill(_stackedObjectList[i].body);
+            _stackedObjectList[i].body.localScale = Vector3.one;
+            _stackedObjectList[i].body
+                .DOPunchScale(Vector3.one * stackedFeedbackScaleRate, stackedFeedbackDuration, 0, 0)
+                /*.SetEase(Ease.InSine)*/;
+            yield return new WaitForSeconds(stackedFeedbackDelay);
         }
     }
 }

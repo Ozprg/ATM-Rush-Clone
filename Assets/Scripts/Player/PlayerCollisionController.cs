@@ -15,8 +15,6 @@ public class PlayerCollisionController : CollisionController
                 {
                     if (!collectedCollectible.collectibleMovementController.isStackedBefore)
                     {
-                        Debug.Log(("player değdi"));
-
                         LevelController.Instance.PlayerCollectedCollectible(collectedCollectible);
                     }
                 }

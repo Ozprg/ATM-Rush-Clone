@@ -24,8 +24,6 @@ public class CollectibleMovementController : MonoBehaviour
             //stackedObjectSpeed hızıyla hareket edecek
             //stackedObjectMaxXDifference kadar x pozisyonu clamplenecek
             //distanceBetweenStackedObjects kadar z farkı olacak stackedTransform ile
-
-            
             
             Vector3 thisPosition = transform.position;
             Vector3 stackedPosition = stackedTransform.position;
