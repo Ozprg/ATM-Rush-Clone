@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 5317967915174753609}
   - component: {fileID: 4508114850930360408}
   - component: {fileID: 3014713477893766668}
+  - component: {fileID: 6265517434273034141}
   m_Layer: 6
   m_Name: Collectible
   m_TagString: Interactable
@@ -161,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab55f3ed559c4152be28ff2600c63e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _body: {fileID: 3209839419923545883}
+  meshController: {fileID: 6265517434273034141}
 --- !u!114 &4508114850930360408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,3 +187,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22bcc31fab3a410bb9786006b8b9c2b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6265517434273034141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4903574702998308992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b8800e554ba06488b011ddf4b6372b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyMeshArray:
+  - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  _body: {fileID: 3209839419923545883}

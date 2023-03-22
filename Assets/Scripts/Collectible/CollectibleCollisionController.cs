@@ -13,9 +13,15 @@ public class CollectibleCollisionController : CollisionController
             if (collectibleController.collectibleMovementController.isCollected)
             {
                 if (collidedObject.layer == obstacleLayer)
+                {                  
+                    LevelController.Instance.StackedObjectHitObstacle(collectibleController);
+                }
+
+                if(collidedObject.layer== gateLayer)
                 {
-                    LevelController.Instance.PlayerCollidedWithObstacle(transform);
-                }    
+                    LevelController.Instance.PlayerTouchedGate(collectibleController);
+                }
+                
                 
                 if (collidedObject.layer == collectibleLayer)
                 {
@@ -32,6 +38,8 @@ public class CollectibleCollisionController : CollisionController
                 IInteractable interactable = collidedObject.GetComponent<IInteractable>();
                 interactable?.Interact();
             }
+
+            
         }
     }
 }

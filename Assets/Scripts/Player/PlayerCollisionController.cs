@@ -19,6 +19,11 @@ public class PlayerCollisionController : CollisionController
                     }
                 }
             }
+
+            if (collidedObject.layer == obstacleLayer)
+            {
+                LevelController.Instance.PlayerCollidedWithObstacle(transform);
+            }
             
             IInteractable interactable = collidedObject.GetComponent<IInteractable>();
             interactable?.Interact();

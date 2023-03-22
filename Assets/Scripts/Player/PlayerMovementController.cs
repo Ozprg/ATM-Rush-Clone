@@ -32,4 +32,5 @@ public class PlayerMovementController : MonoBehaviour
         
         transform.position += Vector3.forward * _moveSpeed * Time.deltaTime;
     }
+
 }

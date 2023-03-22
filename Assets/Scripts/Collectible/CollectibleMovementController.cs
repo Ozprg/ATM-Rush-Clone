@@ -1,5 +1,7 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CollectibleMovementController : MonoBehaviour
 {
@@ -44,10 +46,20 @@ public class CollectibleMovementController : MonoBehaviour
 
     public void FallFromSTheStack()
     {
+        Vector3 currentPosition= transform.position;
+        float randomXValue = UnityEngine.Random.Range(3, -3);
+        float randomZValue = currentPosition.z + UnityEngine.Random.Range (7,13);
+        Vector3 jumpPos = new Vector3 (randomXValue,0, randomZValue);
+
+        transform.DOJump(jumpPos, 1, 1, 0.5f)
+            .OnComplete(EnableCollusion);
+
+        
         isCollected = false;
         stackedTransform = null;
         
-        //Stackten düşme hareketi, zıplama, kaybolma, yok olma
+
+
     }
 
     public void EnableActivatedState()
@@ -59,6 +71,13 @@ public class CollectibleMovementController : MonoBehaviour
                 isStackedBefore = true;
                 isCollected = true;
             }
+            
         }
     }
+
+    public void EnableCollusion()
+    {
+        isStackedBefore = false;
+    }
+
 }

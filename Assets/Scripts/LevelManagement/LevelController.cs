@@ -20,7 +20,8 @@ public class LevelController : Singleton<LevelController>
     public event OnStackedObjectHitObstacleDelegate OnStackedObjectHitObstacle;
     public delegate void OnFirstInputDetectedDelegate();
     public event OnFirstInputDetectedDelegate OnFirstInputDetected;
-
+    public delegate void OnPlayerTouchedGateDelegate(CollectibleController collectibleController);
+    public event OnPlayerTouchedGateDelegate OnPlayerTouchedGate;
 
     public void LevelFailed()
     {
@@ -55,5 +56,10 @@ public class LevelController : Singleton<LevelController>
     public void FirstInputDetected()
     {
         OnFirstInputDetected?.Invoke();
+    }
+
+    public void PlayerTouchedGate(CollectibleController collectibleController)
+    {
+        OnPlayerTouchedGate?.Invoke(collectibleController);
     }
 }
