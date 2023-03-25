@@ -7,9 +7,10 @@ public class CollectibleMeshController : MonoBehaviour
 {
     [SerializeField] Mesh[] moneyMeshArray;
     [SerializeField] private Transform _body;
-    public Transform body => _body;
-    public Mesh[] meshes=> moneyMeshArray;
     private MeshFilter meshFilter;
+    public Transform body => _body;
+    public Mesh[] meshes => moneyMeshArray;
+    
 
 
     private void Awake()
@@ -21,8 +22,8 @@ public class CollectibleMeshController : MonoBehaviour
     {
         if (level <= moneyMeshArray.Length)
         {
-            meshFilter.mesh = moneyMeshArray[level - 1];
+            meshFilter.mesh = moneyMeshArray[level - 1];           
         }
         
-    }
+    } 
 }

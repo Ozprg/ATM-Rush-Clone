@@ -29,12 +29,14 @@ public class StackManager : MonoBehaviour
     {
         LevelController.Instance.OnPlayerCollectedCollectible += OnPlayerCollectedCollectible;
         LevelController.Instance.OnStackedObjectHitObstacle += OnStackedObjectHitObstacle;
+        LevelController.Instance.OnCollectibleSold += OnCollectibleSold;
     }
 
     private void OnDisable()
     {
         LevelController.Instance.OnPlayerCollectedCollectible -= OnPlayerCollectedCollectible;
         LevelController.Instance.OnStackedObjectHitObstacle -= OnStackedObjectHitObstacle;
+        LevelController.Instance.OnCollectibleSold -= OnCollectibleSold;
     }
 
     private void OnPlayerCollectedCollectible(CollectibleController stackingController)
@@ -80,7 +82,16 @@ public class StackManager : MonoBehaviour
         int index = _stackedObjectList.IndexOf(falledObject);
         _stackedObjectList.RemoveAt(index);
         _lastStackedTransform = falledObject.collectibleMovementController.stackedTransform;
-        falledObject.LoseAsStackedObject();
+        
+        if (falledObject._isSold ==true)
+        {
+            falledObject.LoseAsSoldObject();
+
+        }
+        else
+        {
+            falledObject.LoseAsStackedObject();
+        }
     }
 
     private IEnumerator DoCollectedFeedback()
@@ -98,5 +109,10 @@ public class StackManager : MonoBehaviour
             }
             
         }
+    }
+
+    private void OnCollectibleSold(CollectibleController stackedObject)
+    {
+        LoseObject(stackedObject);
     }
 }

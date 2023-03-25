@@ -21,8 +21,8 @@ public class CollectibleCollisionController : CollisionController
                 {
                     LevelController.Instance.PlayerTouchedGate(collectibleController);
                 }
-                
-                
+
+
                 if (collidedObject.layer == collectibleLayer)
                 {
                     CollectibleController collectedCollectible = collidedObject.GetComponent<CollectibleController>();

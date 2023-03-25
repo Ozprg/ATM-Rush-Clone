@@ -9,16 +9,19 @@ public abstract class CollisionController : MonoBehaviour
     public const string layerCollectible = "Collectible";
     public const string layerObstacle = "Obstacle";
     public const string layerGate = "Gate";
+    public const string layerATM = "ATM";
 
     public int collectibleLayer { get; private set; }
     public int obstacleLayer { get; private set; }
     public int gateLayer { get; private set; }
+    public int ATMlayer { get; private set; }
 
     private void Awake()
     {
         collectibleLayer = LayerMask.NameToLayer(layerCollectible);
         obstacleLayer = LayerMask.NameToLayer(layerObstacle);
         gateLayer = LayerMask.NameToLayer(layerGate);
+        ATMlayer = LayerMask.NameToLayer(layerATM);
     }
 
     private void OnEnable()

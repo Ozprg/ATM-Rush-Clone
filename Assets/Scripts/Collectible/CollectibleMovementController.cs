@@ -14,6 +14,8 @@ public class CollectibleMovementController : MonoBehaviour
     public float stackedObjectMaxXDifference  { get; set; }
     public float distanceBetweenStackedObjects  { get; set; }
 
+    [SerializeField][Range(0,1)] float _soldMovementDuration =0.5f;
+
     private void Update()
     {
         FollowPlayer();
@@ -78,6 +80,11 @@ public class CollectibleMovementController : MonoBehaviour
     public void EnableCollusion()
     {
         isStackedBefore = false;
+    }
+
+    public void PerformATMSoldMovement(Transform finalMoneyDestination)
+    {
+        transform.DOMove(finalMoneyDestination.position, _soldMovementDuration).OnComplete(() => gameObject.SetActive(false));
     }
 
 }

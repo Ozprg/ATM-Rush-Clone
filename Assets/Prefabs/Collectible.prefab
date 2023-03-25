@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab55f3ed559c4152be28ff2600c63e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isSold: 0
   meshController: {fileID: 6265517434273034141}
 --- !u!114 &4508114850930360408
 MonoBehaviour:
@@ -187,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22bcc31fab3a410bb9786006b8b9c2b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soldMovementDuration: 0.2
 --- !u!114 &6265517434273034141
 MonoBehaviour:
   m_ObjectHideFlags: 0

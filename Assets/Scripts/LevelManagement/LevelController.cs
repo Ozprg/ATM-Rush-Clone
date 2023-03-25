@@ -21,8 +21,11 @@ public class LevelController : Singleton<LevelController>
     public delegate void OnFirstInputDetectedDelegate();
     public event OnFirstInputDetectedDelegate OnFirstInputDetected;
     public delegate void OnPlayerTouchedGateDelegate(CollectibleController collectibleController);
-    public event OnPlayerTouchedGateDelegate OnPlayerTouchedGate;
-
+    public event OnPlayerTouchedGateDelegate OnPlayerTouchedGate;   
+    public delegate void OnPlayerTouchedATMDelegate(CollectibleController collectibleController, ATMController aTMController);
+    public event OnPlayerTouchedATMDelegate OnPlayerTouchedATM;
+    public delegate void OnCollectibleSoldDelegate(CollectibleController collectibleController);
+    public event OnCollectibleSoldDelegate OnCollectibleSold;
     public void LevelFailed()
     {
         OnLevelFailed?.Invoke();
@@ -61,5 +64,15 @@ public class LevelController : Singleton<LevelController>
     public void PlayerTouchedGate(CollectibleController collectibleController)
     {
         OnPlayerTouchedGate?.Invoke(collectibleController);
+    }
+
+    public void PlayerTouchedATM(CollectibleController collectibleController, ATMController aTMController)
+    {
+        OnPlayerTouchedATM?.Invoke(collectibleController, aTMController);
+    }
+
+    public void CollectibleSold(CollectibleController collectibleController)
+    {
+        OnCollectibleSold?.Invoke(collectibleController);
     }
 }
