@@ -10,11 +10,16 @@ public abstract class CollisionController : MonoBehaviour
     public const string layerObstacle = "Obstacle";
     public const string layerGate = "Gate";
     public const string layerATM = "ATM";
+    public const string layerFinishLine = "Finish";
+    public const string layerPlayer = "Player";
 
     public int collectibleLayer { get; private set; }
     public int obstacleLayer { get; private set; }
     public int gateLayer { get; private set; }
     public int ATMlayer { get; private set; }
+    public int FinishLineLayer { get; private set; }
+    public int PlayerLayer { get; private set; }
+
 
     private void Awake()
     {
@@ -22,6 +27,8 @@ public abstract class CollisionController : MonoBehaviour
         obstacleLayer = LayerMask.NameToLayer(layerObstacle);
         gateLayer = LayerMask.NameToLayer(layerGate);
         ATMlayer = LayerMask.NameToLayer(layerATM);
+        FinishLineLayer = LayerMask.NameToLayer(layerFinishLine);
+        PlayerLayer = LayerMask.NameToLayer(layerPlayer);
     }
 
     private void OnEnable()

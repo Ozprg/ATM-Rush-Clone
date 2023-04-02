@@ -8,9 +8,11 @@ public class PlayerCollisionController : CollisionController
 
         if (collidedObject.CompareTag(interactableTag))
         {
+            CollectibleController collectedCollectible = collidedObject.GetComponent<CollectibleController>();
+
             if (collidedObject.layer == collectibleLayer)
             {
-                CollectibleController collectedCollectible = collidedObject.GetComponent<CollectibleController>();
+                               
                 if (collectedCollectible)
                 {
                     if (!collectedCollectible.collectibleMovementController.isStackedBefore)
@@ -18,7 +20,7 @@ public class PlayerCollisionController : CollisionController
                         LevelController.Instance.PlayerCollectedCollectible(collectedCollectible);
                     }
                 }
-            }
+            }            
 
             if (collidedObject.layer == obstacleLayer)
             {

@@ -7,27 +7,24 @@ using TMPro;
 public class ATMController : MonoBehaviour
 {
     private int _totalValueOfMoney;
-    [SerializeField] private TextMeshPro _moneyText;
+
     public Transform cashLocation;
 
-    ATMCollisionController aTMCollisionController;
+    [SerializeField] private TextMeshPro _moneyText;    
 
     private void Awake()
     {
-        aTMCollisionController = GetComponent< ATMCollisionController >();
-        aTMCollisionController.aTMController= this;
-
         _totalValueOfMoney = 0;
     }
     private void OnEnable()
     {
-        LevelController.Instance.OnPlayerTouchedATM += CountMoney
+        LevelController.Instance.OnCollectibleTouchedATM += CountMoney
 ;
     }
 
     private void OnDisable()
     {
-        LevelController.Instance.OnPlayerTouchedATM -= CountMoney;
+        LevelController.Instance.OnCollectibleTouchedATM -= CountMoney;
     }
 
     
@@ -35,12 +32,8 @@ public class ATMController : MonoBehaviour
     {
 
         _totalValueOfMoney += collectibleController.CurrentLevel * 1;
-
-        Debug.Log(collectibleController.CurrentLevel);
-        Debug.Log(_totalValueOfMoney);
-
         SetMoneyText(_totalValueOfMoney);
-        //collectibleController.gameObject.SetActive(false);
+        
     }
 
     public void SetMoneyText(int _money)

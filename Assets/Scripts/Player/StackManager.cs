@@ -111,7 +111,7 @@ public class StackManager : MonoBehaviour
         }
     }
 
-    private void OnCollectibleSold(CollectibleController stackedObject)
+     private void OnCollectibleSold(CollectibleController stackedObject)
     {
         LoseObject(stackedObject);
     }

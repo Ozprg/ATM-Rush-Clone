@@ -17,11 +17,18 @@ public class CollectibleCollisionController : CollisionController
                     LevelController.Instance.StackedObjectHitObstacle(collectibleController);
                 }
 
-                if(collidedObject.layer== gateLayer)
+                if(collidedObject.layer == gateLayer)
                 {
                     LevelController.Instance.PlayerTouchedGate(collectibleController);
                 }
-
+               
+                if (collidedObject.layer == ATMlayer)
+                {
+                    if (!collectibleController.collectibleMovementController.isOnAir)
+                    {
+                        LevelController.Instance.CollectibleTouchedATM(collectibleController, other.transform.GetComponent<ATMController>());
+                    }                    
+                }
 
                 if (collidedObject.layer == collectibleLayer)
                 {

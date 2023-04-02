@@ -11,11 +11,14 @@ public class PlayerController : Singleton<PlayerController>
     private void OnEnable()
     {
         LevelController.Instance.OnPlayerCollidedWithObstacle += OnPlayerCollidedWithObstacle;
+        LevelController.Instance.OnPlayerCollidedWithFinishLine += OnPlayerCollidedWithFinishLine;
+;
     }
 
     private void OnDisable()
     {
         LevelController.Instance.OnPlayerCollidedWithObstacle -= OnPlayerCollidedWithObstacle;
+        LevelController.Instance.OnPlayerCollidedWithFinishLine -= OnPlayerCollidedWithFinishLine;
     }
     private void Awake()
     {
@@ -28,5 +31,10 @@ public class PlayerController : Singleton<PlayerController>
     {
         playerTransform.position = Vector3.Lerp(playerTransform.position, playerTransform.position - new Vector3(0,0,8), 100f);
         collisionWithPlayerDetected = true;
+    }
+
+    public void  OnPlayerCollidedWithFinishLine()
+    {
+        playerMovementController.OnFinishedStopPlayerMovement();
     }
 }

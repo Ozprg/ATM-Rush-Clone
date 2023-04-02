@@ -22,14 +22,14 @@ public class CollectibleController : MonoBehaviour, IInteractable
     {
 
         LevelController.Instance.OnPlayerTouchedGate += UpgradeMoney;
-        LevelController.Instance.OnPlayerTouchedATM += SellCollectible;
+        LevelController.Instance.OnCollectibleTouchedATM += SellCollectible;
     }
 
     private void OnDisable()
     {
         
         LevelController.Instance.OnPlayerTouchedGate -= UpgradeMoney;
-        LevelController.Instance.OnPlayerTouchedATM -= SellCollectible;
+        LevelController.Instance.OnCollectibleTouchedATM -= SellCollectible;
     }
 
 
@@ -43,6 +43,11 @@ public class CollectibleController : MonoBehaviour, IInteractable
         if (collectibleCollisionController)
         {
             collectibleCollisionController.collectibleController = this;
+        }
+
+        if (collectibleMovementController)
+        {
+            collectibleMovementController.collectibleController = this;
         }
     }
 
@@ -66,26 +71,21 @@ public class CollectibleController : MonoBehaviour, IInteractable
         }
     }
 
-    public void LoseAsStackedObject()
-    {
-        collectibleMovementController.FallFromSTheStack();
-    }
-
     public void UpgradeMoney(CollectibleController collectibleController)
     {
         if (collectibleController == this)
         {
             _currentLevel += 1;
-            
+
             if (_currentLevel > _maxLevel)
             {
                 _currentLevel = _maxLevel;
             }
 
             meshController.UpgradeBody(_currentLevel);
-            
+
         }
-   
+
     }
 
     private void SellCollectible(CollectibleController collectibleController, ATMController aTMController)
@@ -96,6 +96,11 @@ public class CollectibleController : MonoBehaviour, IInteractable
             _buyerAtmTransform = aTMController.cashLocation;
             LevelController.Instance.CollectibleSold(collectibleController);
         }
+    }
+
+    public void LoseAsStackedObject()
+    {
+        collectibleMovementController.FallFromSTheStack();
     }
 
     public void LoseAsSoldObject()
