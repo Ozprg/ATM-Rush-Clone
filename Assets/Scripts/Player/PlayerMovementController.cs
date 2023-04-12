@@ -62,12 +62,14 @@ public class PlayerMovementController : MonoBehaviour
 
         transform.DOMove(new Vector3(0, transform.position.y, _maxZPoint), 0.6f).OnComplete(() =>
         {
+            Debug.Log("Yukarý Doðru çýkma methodu çalýþýyor");
             StartCoroutine(MoveToAirWhenLevelIsFinished(1));
         });     
     }
 
     private IEnumerator MoveToAirWhenLevelIsFinished(int delay = 0)
     {
+        Debug.Log( delay + " Saniye Sonra Yukarý Doðru çýkma methodu içindeki coroutine çalýþýyor");
         yield return new WaitForSeconds(delay);
 
         transform.DOMoveY(ATMController.Instance.TotalMoney, 3);

@@ -64,7 +64,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7122995852326536594}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.192, z: 94.93}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -146,7 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e239b5df365044f979748bd8565c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playertransform: {fileID: 0}
+  _finishLineCollectibles: {fileID: 0}
+  numberOfCollectibles: 0
 --- !u!1 &7122995852499001646
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7122995852499001646}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.208, z: 94.93}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -257,7 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e239b5df365044f979748bd8565c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playertransform: {fileID: 0}
+  _finishLineCollectibles: {fileID: 0}
+  numberOfCollectibles: 0
 --- !u!1 &7122995852717560603
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7122995852717560603}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.212, z: 94.93}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -368,7 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e239b5df365044f979748bd8565c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playertransform: {fileID: 0}
+  _finishLineCollectibles: {fileID: 0}
+  numberOfCollectibles: 0
 --- !u!1 &7122995853538453150
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +400,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7122995853538453150}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.255, z: 94.93}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -479,7 +482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e239b5df365044f979748bd8565c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playertransform: {fileID: 0}
+  _finishLineCollectibles: {fileID: 0}
+  numberOfCollectibles: 0
 --- !u!1 &7290195852335692311
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +512,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7290195852335692311}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.15, z: 94.93}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -590,4 +594,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e239b5df365044f979748bd8565c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playertransform: {fileID: 0}
+  _finishLineCollectibles: {fileID: 0}
+  numberOfCollectibles: 0

@@ -87,8 +87,9 @@ public class StackManager : MonoBehaviour
 
     private void LoseObject(CollectibleController falledObject, bool isFinishLine = false)
     {
-        int index = _stackedObjectList.IndexOf(falledObject);
-        _stackedObjectList.RemoveAt(index);
+    
+        _stackedObjectList.Remove(falledObject);
+       
         _lastStackedTransform = falledObject.collectibleMovementController.stackedTransform;
         if (!isFinishLine)
         {

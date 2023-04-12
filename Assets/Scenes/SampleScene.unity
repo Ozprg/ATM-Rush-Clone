@@ -196,6 +196,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 735847504}
     m_Modifications:
+    - target: {fileID: 2389465013510984172, guid: bad2b1377c0d6394abef27bbe16de0d0, type: 3}
+      propertyPath: _finishLineCollectibles
+      value: 
+      objectReference: {fileID: 4903574702998308992, guid: 241e569cd5edcc04c8f8333d1a379a90, type: 3}
     - target: {fileID: 3007023455193571379, guid: bad2b1377c0d6394abef27bbe16de0d0, type: 3}
       propertyPath: _playerTransform
       value: 

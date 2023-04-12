@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 5338209501541647153}
   - component: {fileID: 439937619606378761}
   - component: {fileID: 4612868019165788415}
+  - component: {fileID: 2389465013510984172}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -164,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionWithPlayerDetected: 0
+  levelCompleted: 0
 --- !u!114 &5338209501541647153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +215,20 @@ MonoBehaviour:
   stackedFeedbackDelay: 0
   frontStackTransform: {fileID: 5979975581126551157}
   _finishStackCount: 0
+--- !u!114 &2389465013510984172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4013584321999723249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e239b5df365044f979748bd8565c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _finishLineCollectibles: {fileID: 6130939955378560524, guid: b9fed3492ab20774ea528cb7c7bb3a58, type: 3}
+  numberOfCollectibles: 7
 --- !u!1 &5455036343138877807
 GameObject:
   m_ObjectHideFlags: 0

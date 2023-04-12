@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     public PlayerMovementController playerMovementController { get; private set; }
     public PlayerCollisionController playerCollisionController { get; private set; }

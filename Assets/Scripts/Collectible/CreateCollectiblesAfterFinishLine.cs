@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class CreateCollectiblesAfterFinishLine : MonoBehaviour
 {
-    [SerializeField] Transform _playertransform;
     [SerializeField] GameObject _finishLineCollectibles;
     [SerializeField] int numberOfCollectibles;
     
@@ -24,17 +23,20 @@ public class CreateCollectiblesAfterFinishLine : MonoBehaviour
 
     public void CreateCollectiblesWhenLevelIsFinished()
     {
-        for (int i = 1; i < numberOfCollectibles; i++)
+        for (int i = 1; i <= numberOfCollectibles; i++)
         {
             Vector3 collectiblePos = new Vector3
-                (_playertransform.position.x, 
-                _playertransform.position.y - i,
-                _playertransform.position.z);
+                (transform.position.x, 
+                transform.position.y - i,
+                transform.position.z);
 
             GameObject collectibles = Instantiate(_finishLineCollectibles, collectiblePos, Quaternion.identity);
-            collectibles.transform.parent = _playertransform;
+            collectibles.transform.SetParent(transform);
 
+            Debug.Log("Collectible üretildi");
         }
+
+        Debug.Log(numberOfCollectibles+ " Kadar collectible üretildi");
        
     }
 
