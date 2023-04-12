@@ -1,12 +1,15 @@
+using DG.Tweening;
 using UnityEngine;
 
-public class PlayerController : Singleton<PlayerController>
+public class PlayerController : MonoBehaviour
 {
     public PlayerMovementController playerMovementController { get; private set; }
     public PlayerCollisionController playerCollisionController { get; private set; }
     public StackManager stackManager { get; private set; }
 
     public bool collisionWithPlayerDetected;
+    public bool levelCompleted;
+
 
     private void OnEnable()
     {
@@ -29,11 +32,11 @@ public class PlayerController : Singleton<PlayerController>
 
     public void OnPlayerCollidedWithObstacle(Transform playerTransform)
     {
-        playerTransform.position = Vector3.Lerp(playerTransform.position, playerTransform.position - new Vector3(0,0,8), 100f);
+        DOTween.To(() => playerTransform.position, x => playerTransform.position = x, playerTransform.position - new Vector3(0,0,8), 1f);
         collisionWithPlayerDetected = true;
     }
 
-    public void  OnPlayerCollidedWithFinishLine()
+    public void OnPlayerCollidedWithFinishLine()
     {
         playerMovementController.OnFinishedStopPlayerMovement();
     }

@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ATMController : MonoBehaviour
+public class ATMController : Singleton<ATMController>
 {
     private int _totalValueOfMoney;
+    public int TotalMoney { get { return _totalValueOfMoney; } }
 
     public Transform cashLocation;
 

@@ -7,8 +7,7 @@ public class CollectibleController : MonoBehaviour, IInteractable
 {
     private int _currentLevel = 1; 
     private int _maxLevel = 0;
-    private int _totalValueOfCollectedMoney;
-
+ 
     public bool _isSold;
 
     Transform _buyerAtmTransform;
@@ -20,19 +19,15 @@ public class CollectibleController : MonoBehaviour, IInteractable
 
     private void OnEnable()
     {
-
         LevelController.Instance.OnPlayerTouchedGate += UpgradeMoney;
         LevelController.Instance.OnCollectibleTouchedATM += SellCollectible;
     }
 
     private void OnDisable()
-    {
-        
+    {      
         LevelController.Instance.OnPlayerTouchedGate -= UpgradeMoney;
-        LevelController.Instance.OnCollectibleTouchedATM -= SellCollectible;
+        LevelController.Instance.OnCollectibleTouchedATM -= SellCollectible;      
     }
-
-
 
     private void Awake()
     {
@@ -54,11 +49,8 @@ public class CollectibleController : MonoBehaviour, IInteractable
     private void Start()
     {
         _maxLevel = meshController.meshes.Length;
-        _totalValueOfCollectedMoney = 0;
+        
     }
-
- 
-
     public void Interact()
     {
         if (collectibleMovementController)
@@ -83,9 +75,7 @@ public class CollectibleController : MonoBehaviour, IInteractable
             }
 
             meshController.UpgradeBody(_currentLevel);
-
         }
-
     }
 
     private void SellCollectible(CollectibleController collectibleController, ATMController aTMController)
@@ -110,6 +100,4 @@ public class CollectibleController : MonoBehaviour, IInteractable
     }
 
     
-
-
 }

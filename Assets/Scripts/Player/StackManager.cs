@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using DG.Tweening;
 using UnityEngine;
 
@@ -12,9 +14,12 @@ public class StackManager : MonoBehaviour
     [SerializeField] [Range(0, 1)] private float stackedFeedbackDuration;
     [SerializeField] [Range(0, 1)] private float stackedFeedbackDelay;
     [SerializeField] private Transform frontStackTransform;
-    private List<CollectibleController> _stackedObjectList;
+    private bool _isFirstStackCollided;
     private Transform _lastStackedTransform;
-
+    private List<CollectibleController> _stackedObjectList;
+    public List<CollectibleController> StackedObjectList => _stackedObjectList;
+    public int _finishStackCount;
+    
     private void Awake()
     {
         _stackedObjectList = new List<CollectibleController>();
@@ -30,6 +35,7 @@ public class StackManager : MonoBehaviour
         LevelController.Instance.OnPlayerCollectedCollectible += OnPlayerCollectedCollectible;
         LevelController.Instance.OnStackedObjectHitObstacle += OnStackedObjectHitObstacle;
         LevelController.Instance.OnCollectibleSold += OnCollectibleSold;
+        LevelController.Instance.OnStackedObjectCollidedWithFinishLine += OnStackedObjectCollidedWithFinishLine;
     }
 
     private void OnDisable()
@@ -37,14 +43,16 @@ public class StackManager : MonoBehaviour
         LevelController.Instance.OnPlayerCollectedCollectible -= OnPlayerCollectedCollectible;
         LevelController.Instance.OnStackedObjectHitObstacle -= OnStackedObjectHitObstacle;
         LevelController.Instance.OnCollectibleSold -= OnCollectibleSold;
+        LevelController.Instance.OnStackedObjectCollidedWithFinishLine -= OnStackedObjectCollidedWithFinishLine;
     }
+
+
 
     private void OnPlayerCollectedCollectible(CollectibleController stackingController)
     {
         stackingController.collectibleMovementController.stackedObjectSpeed = this.stackedObjectSpeed;
         stackingController.collectibleMovementController.stackedObjectMaxXDifference = this.stackedObjectMaxXDifference;
-        stackingController.collectibleMovementController.distanceBetweenStackedObjects =
-            this.distanceBetweenStackedObjects;
+        stackingController.collectibleMovementController.distanceBetweenStackedObjects = this.distanceBetweenStackedObjects;
         
         _stackedObjectList.Add(stackingController);
        
@@ -77,21 +85,23 @@ public class StackManager : MonoBehaviour
         }
     }
 
-    private void LoseObject(CollectibleController falledObject)
+    private void LoseObject(CollectibleController falledObject, bool isFinishLine = false)
     {
         int index = _stackedObjectList.IndexOf(falledObject);
         _stackedObjectList.RemoveAt(index);
         _lastStackedTransform = falledObject.collectibleMovementController.stackedTransform;
+        if (!isFinishLine)
+        {
+            if (falledObject._isSold == true)
+            {
+                falledObject.LoseAsSoldObject();
+            }
+            else
+            {
+                falledObject.LoseAsStackedObject();
+            }
+        }
         
-        if (falledObject._isSold ==true)
-        {
-            falledObject.LoseAsSoldObject();
-
-        }
-        else
-        {
-            falledObject.LoseAsStackedObject();
-        }
     }
 
     private IEnumerator DoCollectedFeedback()
@@ -103,16 +113,28 @@ public class StackManager : MonoBehaviour
                 DOTween.Kill(_stackedObjectList[i].meshController.body);
                 _stackedObjectList[i].meshController.body.localScale = Vector3.one;
                 _stackedObjectList[i].meshController.body
-                    .DOPunchScale(Vector3.one * stackedFeedbackScaleRate, stackedFeedbackDuration, 0, 0)
-                    /*.SetEase(Ease.InSine)*/;
+                    .DOPunchScale(Vector3.one * stackedFeedbackScaleRate, stackedFeedbackDuration, 0, 0);
                 yield return new WaitForSeconds(stackedFeedbackDelay);
             }
             
         }
     }
 
-     private void OnCollectibleSold(CollectibleController stackedObject)
+    private void OnCollectibleSold(CollectibleController stackedObject)
     {
         LoseObject(stackedObject);
     }
+
+    private void OnStackedObjectCollidedWithFinishLine(CollectibleController collectibleController)
+    {
+        if (!_isFirstStackCollided)
+        {
+            _isFirstStackCollided = true;
+            _finishStackCount = _stackedObjectList.Count;
+        }
+
+        LoseObject(collectibleController, true);
+
+    }
+
 }

@@ -1,8 +1,8 @@
 using DG.Tweening;
 using System;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEngine.UI.GridLayoutGroup;
+
+
 
 public class CollectibleMovementController : MonoBehaviour
 {
@@ -16,8 +16,6 @@ public class CollectibleMovementController : MonoBehaviour
     public float stackedObjectSpeed { get; set; }
     public float stackedObjectMaxXDifference  { get; set; }
     public float distanceBetweenStackedObjects  { get; set; }
-
-
 
     [SerializeField][Range(0,1)] float _soldMovementDuration =100;
     [SerializeField][Range(0, 1)] float _finidLineMovementDuration = 1f;
@@ -36,14 +34,14 @@ public class CollectibleMovementController : MonoBehaviour
             Vector3 stackedPosition = stackedTransform.position;
 
             thisPosition = new Vector3(
-                Mathf.Clamp(Mathf.Lerp(thisPosition.x, stackedPosition.x, Mathf.Clamp(Time.deltaTime * stackedObjectSpeed, 0, 0.8f)),
-                stackedPosition.x - stackedObjectMaxXDifference, 
-                stackedPosition.x + stackedObjectMaxXDifference),
+            Mathf.Clamp(Mathf.Lerp(thisPosition.x, stackedPosition.x, Mathf.Clamp(Time.deltaTime * stackedObjectSpeed, 0, 0.8f)),
+            stackedPosition.x - stackedObjectMaxXDifference, 
+            stackedPosition.x + stackedObjectMaxXDifference),
                         
-                y:thisPosition.y,
+            y:thisPosition.y,
                 
-                Mathf.Lerp(thisPosition.z, stackedPosition.z + distanceBetweenStackedObjects,
-                    Mathf.Clamp(Time.deltaTime * stackedObjectSpeed, 0, 0.8f)));
+            Mathf.Lerp(thisPosition.z, stackedPosition.z + distanceBetweenStackedObjects,
+            Mathf.Clamp(Time.deltaTime * stackedObjectSpeed, 0, 0.8f)));
 
             transform.position = thisPosition;
         }
@@ -125,5 +123,4 @@ public class CollectibleMovementController : MonoBehaviour
         float randomZValue = currentPosition.z + UnityEngine.Random.Range(7, 13);
         return new Vector3(randomXValue, 0, randomZValue);
     }
-
 }

@@ -179,6 +179,8 @@ MonoBehaviour:
   _moveSpeed: 8
   xMin: -3
   xMax: 3
+  _upwardsSpeed: 0
+  _moneyCountFactor: 0
 --- !u!114 &439937619606378761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +212,7 @@ MonoBehaviour:
   stackedFeedbackDuration: 0.15
   stackedFeedbackDelay: 0
   frontStackTransform: {fileID: 5979975581126551157}
+  _finishStackCount: 0
 --- !u!1 &5455036343138877807
 GameObject:
   m_ObjectHideFlags: 0

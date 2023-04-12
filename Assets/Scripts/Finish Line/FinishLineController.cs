@@ -9,6 +9,7 @@ public class FinishLineController : MonoBehaviour
     [SerializeField] private Transform finalATMTransform;
     [SerializeField] private Transform finishLineTransform;
 
+    
     private void OnEnable()
     {
         LevelController.Instance.OnStackedObjectCollidedWithFinishLine += OnLevelCompleted;

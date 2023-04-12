@@ -215,7 +215,6 @@ GameObject:
   - component: {fileID: 8877524145109914575}
   - component: {fileID: 8877524145109914568}
   - component: {fileID: 8877524145109914569}
-  - component: {fileID: 8877524145109914573}
   - component: {fileID: 8877524145109914574}
   m_Layer: 9
   m_Name: ATM
@@ -304,19 +303,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8877524145109914573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8877524145109914571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e77c5d0ec31a70948a0b243a0ec3aede, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aTMController: {fileID: 0}
 --- !u!114 &8877524145109914574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,5 +315,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e0359d373a23244afc12923be1a35c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyText: {fileID: 1152701314913809385}
   cashLocation: {fileID: 1409375578284536167}
+  _moneyText: {fileID: 1152701314913809385}

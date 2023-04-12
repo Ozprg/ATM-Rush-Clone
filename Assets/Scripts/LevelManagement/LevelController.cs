@@ -52,6 +52,8 @@ public class LevelController : Singleton<LevelController>
     public event OnCollectibleSoldDelegate OnCollectibleSold;
 
     #endregion
+
+    #region Invoke Methods
     public void LevelFailed()
     {
         OnLevelFailed?.Invoke();
@@ -111,4 +113,6 @@ public class LevelController : Singleton<LevelController>
     {
         OnStackedObjectCollidedWithFinishLine?.Invoke(collectibleController);
     }
+
+    #endregion
 }
