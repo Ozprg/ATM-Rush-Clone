@@ -11,6 +11,7 @@ public class CollectibleController : MonoBehaviour, IInteractable
     public bool _isSold;
 
     Transform _buyerAtmTransform;
+
     public int CurrentLevel => _currentLevel;
 
     public CollectibleMeshController meshController;    

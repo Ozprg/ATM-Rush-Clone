@@ -5,8 +5,5 @@
         [SerializeField] private Transform _currentLevelPlatform;
         public Transform CurrentLevelPlatform => _currentLevelPlatform;
     
-
-
-
     }
 

@@ -3,10 +3,12 @@ using UnityEngine;
 public class LevelController : Singleton<LevelController>
 {
     public LevelCreator creator { get; private set; }
+    public LevelData levelData { get; private set; }
 
     private void Awake()
     {
         creator = GetComponent<LevelCreator>();
+        levelData = GetComponent<LevelData>();
     }
 
     #region Events and Delegates
@@ -24,6 +26,9 @@ public class LevelController : Singleton<LevelController>
     public delegate void OnLevelIsCreatedDelegate();
     public event OnLevelIsCreatedDelegate OnLevelIsCreated;
 
+    public delegate void OnMoneyChangeDelegate(int newMoneyAmount, int previousMoneyAmount);
+    public event OnMoneyChangeDelegate OnMoneyChange;
+
     public delegate void OnPlayerCollectedCollectibleDelegate(CollectibleController collectibleController);
     public event OnPlayerCollectedCollectibleDelegate OnPlayerCollectedCollectible;
 
@@ -32,6 +37,9 @@ public class LevelController : Singleton<LevelController>
 
     public delegate void OnPlayerCollidedWithFinishLineDelegate();
     public event OnPlayerCollidedWithFinishLineDelegate OnPlayerCollidedWithFinishLine;
+
+    public delegate void OnPlayerFinishedUpwardsMovementDelegate();
+    public event OnPlayerFinishedUpwardsMovementDelegate OnPlayerFinishedUpwardsMovement;
 
     public delegate void OnStackedObjectCollidedWithFinishLineDelegate(CollectibleController collectibleController);
     public event OnStackedObjectCollidedWithFinishLineDelegate OnStackedObjectCollidedWithFinishLine;
@@ -62,6 +70,10 @@ public class LevelController : Singleton<LevelController>
     public void LevelCompleted(CollectibleController collectibleController)
     {
         OnLevelCompleted?.Invoke(collectibleController);
+    }
+    public void PlayerFinishedUpwardsMovement()
+    {
+        OnPlayerFinishedUpwardsMovement?.Invoke();
     }
 
     public void LevelIsCreated()

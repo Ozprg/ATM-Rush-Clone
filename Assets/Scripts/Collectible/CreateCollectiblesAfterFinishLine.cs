@@ -9,7 +9,7 @@ using UnityEngine;
 public class CreateCollectiblesAfterFinishLine : MonoBehaviour
 {
     [SerializeField] GameObject _finishLineCollectibles;
-    [SerializeField] int numberOfCollectibles;
+    //[SerializeField] int numberOfCollectibles;
     
     private void OnEnable()
     {
@@ -23,7 +23,7 @@ public class CreateCollectiblesAfterFinishLine : MonoBehaviour
 
     public void CreateCollectiblesWhenLevelIsFinished()
     {
-        for (int i = 1; i <= numberOfCollectibles; i++)
+        for (int i = 1; i <= ATMController.Instance.TotalMoney; i++)
         {
             Vector3 collectiblePos = new Vector3
                 (transform.position.x, 
@@ -36,10 +36,7 @@ public class CreateCollectiblesAfterFinishLine : MonoBehaviour
             Debug.Log("Collectible üretildi");
         }
 
-        Debug.Log(numberOfCollectibles+ " Kadar collectible üretildi");
-       
+        Debug.Log(ATMController.Instance.TotalMoney + " Kadar collectible üretildi");   
     }
-
-
 }
 

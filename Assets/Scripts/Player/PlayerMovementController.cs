@@ -19,6 +19,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         playerMovementEnabled = true;
     }
+
     private void Update()
     {
         PlayerMovement();
@@ -72,6 +73,15 @@ public class PlayerMovementController : MonoBehaviour
         Debug.Log( delay + " Saniye Sonra Yukarý Doðru çýkma methodu içindeki coroutine çalýþýyor");
         yield return new WaitForSeconds(delay);
 
-        transform.DOMoveY(ATMController.Instance.TotalMoney, 3);
+        if (ATMController.Instance.TotalMoney % 2 == 0)
+        {
+            transform.DOMoveY((ATMController.Instance.TotalMoney * 2) + 2 , _upwardsSpeed).OnComplete(() => LevelController.Instance.PlayerFinishedUpwardsMovement()) ; 
+                                                                                         
+        }                                                                    
+        else 
+        {
+            transform.DOMoveY(ATMController.Instance.TotalMoney * 2 , _upwardsSpeed).OnComplete(() => LevelController.Instance.PlayerFinishedUpwardsMovement()); 
+        }
+
     }
 }
