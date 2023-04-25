@@ -14,7 +14,8 @@ public class PlayerMovementController : MonoBehaviour
     private Vector3 newPosition;
     private float _posX;
     private bool playerMovementEnabled;
-      
+    private int indexOfMultiplier;
+
     private void Awake()
     {
         playerMovementEnabled = true;
@@ -43,11 +44,9 @@ public class PlayerMovementController : MonoBehaviour
                 transform.localPosition = new Vector3(newPosition.x, transform.localPosition.y, transform.localPosition.z);
                 
             }
-
             transform.position += Vector3.forward * _moveSpeed * Time.deltaTime;
         }
-    }
-        
+    }      
     public void OnFinishedStopPlayerMovement()
     {
         playerMovementEnabled = false;
@@ -71,17 +70,25 @@ public class PlayerMovementController : MonoBehaviour
     private IEnumerator MoveToAirWhenLevelIsFinished(int delay = 0)
     {
         Debug.Log( delay + " Saniye Sonra Yukarý Doðru çýkma methodu içindeki coroutine çalýþýyor");
+
         yield return new WaitForSeconds(delay);
 
-        if (ATMController.Instance.TotalMoney % 2 == 0)
+        foreach (Transform moneyMultiplier in FinishLineMoneyMultiplierManager.Instance.moneyMultiplierCubeList)
         {
-            transform.DOMoveY((ATMController.Instance.TotalMoney * 2) + 2 , _upwardsSpeed).OnComplete(() => LevelController.Instance.PlayerFinishedUpwardsMovement()) ; 
-                                                                                         
-        }                                                                    
-        else 
-        {
-            transform.DOMoveY(ATMController.Instance.TotalMoney * 2 , _upwardsSpeed).OnComplete(() => LevelController.Instance.PlayerFinishedUpwardsMovement()); 
+            if (ATMController.Instance.TotalMoney <= 10)
+            {
+                indexOfMultiplier = ATMController.Instance.TotalMoney;
+                float heightOfMultiplier = FinishLineMoneyMultiplierManager.Instance.moneyMultiplierCubeList[indexOfMultiplier].position.y;
+                transform.DOMoveY(heightOfMultiplier, _upwardsSpeed).OnComplete(()
+                    => LevelController.Instance.PlayerFinishedUpwardsMovement());
+            }
+            else if (ATMController.Instance.TotalMoney > 10)
+            {
+                indexOfMultiplier = FinishLineMoneyMultiplierManager.Instance.moneyMultiplierCubeList.Count - 1;
+                float heightOfMultiplier = FinishLineMoneyMultiplierManager.Instance.moneyMultiplierCubeList[indexOfMultiplier].position.y;
+                transform.DOMoveY(heightOfMultiplier, _upwardsSpeed).OnComplete(()
+                    => LevelController.Instance.PlayerFinishedUpwardsMovement());
+            }   
         }
-
     }
 }

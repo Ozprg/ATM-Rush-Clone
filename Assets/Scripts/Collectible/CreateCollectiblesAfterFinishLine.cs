@@ -9,7 +9,6 @@ using UnityEngine;
 public class CreateCollectiblesAfterFinishLine : MonoBehaviour
 {
     [SerializeField] GameObject _finishLineCollectibles;
-    //[SerializeField] int numberOfCollectibles;
     
     private void OnEnable()
     {

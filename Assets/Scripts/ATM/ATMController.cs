@@ -19,8 +19,7 @@ public class ATMController : Singleton<ATMController>
     }
     private void OnEnable()
     {
-        LevelController.Instance.OnCollectibleTouchedATM += CountMoney
-;
+        LevelController.Instance.OnCollectibleTouchedATM += CountMoney;
     }
 
     private void OnDisable()
