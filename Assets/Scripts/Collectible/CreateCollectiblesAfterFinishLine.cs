@@ -22,7 +22,7 @@ public class CreateCollectiblesAfterFinishLine : MonoBehaviour
 
     public void CreateCollectiblesWhenLevelIsFinished()
     {
-        for (int i = 1; i <= ATMController.Instance.TotalMoney; i++)
+        for (int i = 1; i <= MoneyManager.Instance.totalValueOfMoney; i++)
         {
             Vector3 collectiblePos = new Vector3
                 (transform.position.x, 
@@ -35,7 +35,7 @@ public class CreateCollectiblesAfterFinishLine : MonoBehaviour
             Debug.Log("Collectible üretildi");
         }
 
-        Debug.Log(ATMController.Instance.TotalMoney + " Kadar collectible üretildi");   
+        Debug.Log(MoneyManager.Instance.totalValueOfMoney + " Kadar collectible üretildi");   
     }
 }
 

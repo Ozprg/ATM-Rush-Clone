@@ -110,6 +110,10 @@ public class LevelController : Singleton<LevelController>
     {
         OnCollectibleTouchedATM?.Invoke(collectibleController, aTMController);
     }
+    public void MoneyChanged(int newMoneyAmount, int previousMoneyAmount)
+    {
+        OnMoneyChange?.Invoke(newMoneyAmount, previousMoneyAmount);
+    }
 
     public void CollectibleSold(CollectibleController collectibleController)
     {

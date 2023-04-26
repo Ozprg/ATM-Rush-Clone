@@ -75,14 +75,14 @@ public class PlayerMovementController : MonoBehaviour
 
         foreach (Transform moneyMultiplier in FinishLineMoneyMultiplierManager.Instance.moneyMultiplierCubeList)
         {
-            if (ATMController.Instance.TotalMoney <= 10)
+            if (MoneyManager.Instance.totalValueOfMoney <= 10)
             {
-                indexOfMultiplier = ATMController.Instance.TotalMoney;
+                indexOfMultiplier = MoneyManager.Instance.totalValueOfMoney;
                 float heightOfMultiplier = FinishLineMoneyMultiplierManager.Instance.moneyMultiplierCubeList[indexOfMultiplier].position.y;
                 transform.DOMoveY(heightOfMultiplier, _upwardsSpeed).OnComplete(()
                     => LevelController.Instance.PlayerFinishedUpwardsMovement());
             }
-            else if (ATMController.Instance.TotalMoney > 10)
+            else if (MoneyManager.Instance.totalValueOfMoney > 10)
             {
                 indexOfMultiplier = FinishLineMoneyMultiplierManager.Instance.moneyMultiplierCubeList.Count - 1;
                 float heightOfMultiplier = FinishLineMoneyMultiplierManager.Instance.moneyMultiplierCubeList[indexOfMultiplier].position.y;

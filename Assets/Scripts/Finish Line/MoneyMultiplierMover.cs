@@ -22,13 +22,13 @@ public class MoneyMultiplierMover : MonoBehaviour
 
     private void OnPlayerFinishedUpwardsMovement()
     {
-        if (ATMController.Instance.TotalMoney <= maxAmountOfMultiplierBlocks)
+        if (MoneyManager.Instance.totalValueOfMoney <= maxAmountOfMultiplierBlocks)
         {
-            indexOfMultiplier = ATMController.Instance.TotalMoney;
+            indexOfMultiplier = MoneyManager.Instance.totalValueOfMoney;
             transformToMoveForward = FinishLineMoneyMultiplierManager.Instance.moneyMultiplierCubeList[indexOfMultiplier];
             transformToMoveForward.transform.DOMoveZ(transformToMoveForward.position.z - 3, durationOfForwardMovement);
         }
-        else if (ATMController.Instance.TotalMoney > maxAmountOfMultiplierBlocks)
+        else if (MoneyManager.Instance.totalValueOfMoney > maxAmountOfMultiplierBlocks)
         {
             indexOfMultiplier = FinishLineMoneyMultiplierManager.Instance.moneyMultiplierCubeList.Count - 1;
             transformToMoveForward = FinishLineMoneyMultiplierManager.Instance.moneyMultiplierCubeList[indexOfMultiplier];

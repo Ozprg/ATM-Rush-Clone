@@ -4,19 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ATMController : Singleton<ATMController>
+public class ATMController : MonoBehaviour
 {
-    private int _totalValueOfMoney;
-    public int TotalMoney { get { return _totalValueOfMoney; } }
-
+    [SerializeField] private TextMeshPro _moneyText;
     public Transform cashLocation;
 
-    [SerializeField] private TextMeshPro _moneyText;    
-
-    private void Awake()
-    {
-        _totalValueOfMoney = 0;
-    }
     private void OnEnable()
     {
         LevelController.Instance.OnCollectibleTouchedATM += CountMoney;
@@ -27,20 +19,14 @@ public class ATMController : Singleton<ATMController>
         LevelController.Instance.OnCollectibleTouchedATM -= CountMoney;
     }
 
-    
-    public void CountMoney(CollectibleController  collectibleController, ATMController aTMController)
+    private void CountMoney(CollectibleController  collectibleController, ATMController aTMController)
     {
-
-        _totalValueOfMoney += collectibleController.CurrentLevel * 1;
-        SetMoneyText(_totalValueOfMoney);
-        
+        MoneyManager.Instance.totalValueOfMoney += collectibleController.CurrentLevel * 1;
+        SetMoneyText(MoneyManager.Instance.totalValueOfMoney);       
     }
 
-    public void SetMoneyText(int _money)
+    private void SetMoneyText(int _money)
     {
         _moneyText.text = _money.ToString();
     }
-
-
-
 }
